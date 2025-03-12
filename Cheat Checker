@@ -1,0 +1,35 @@
+-- Create a ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Create a Frame for the UI
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0.5, 0, 0.5, 0)
+frame.Position = UDim2.new(0.25, 0, 0.25, 0)
+frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame.BackgroundTransparency = 0.5
+frame.Parent = screenGui
+
+-- Create a TextLabel to display messages
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(1, 0, 1, 0)
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.BackgroundTransparency = 1
+textLabel.Parent = frame
+
+-- Function to update the UI with player status
+local function updatePlayerStatus(playerName, isCheating)
+    if isCheating then
+        textLabel.Text = textLabel.Text .. playerName .. " is cheating with Aimbot/ESP!\n"
+    else
+        textLabel.Text = textLabel.Text .. playerName .. " is clean.\n"
+    end
+end
+
+-- Example usage
+-- This would be replaced with actual logic to check for cheats
+for _, player in pairs(game.Players:GetPlayers()) do
+    -- Simulate a check (replace this with your actual cheat detection logic)
+    local isCheating = math.random() < 0.5 -- Randomly determine if cheating for demonstration
+    updatePlayerStatus(player.Name, isCheating)
+end
